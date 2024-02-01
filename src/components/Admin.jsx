@@ -5,7 +5,6 @@ import "./Admin.css";
 import { useForm, useFieldArray } from "react-hook-form";
 import { emptydata } from "../utils/DefaultUserData";
 import { useNavigate } from "react-router-dom";
-// import BounceLoader from "react-spinners/BounceLoader";
 
 function Admin() {
   const [loading, setLoading] = useState(true);
@@ -134,7 +133,7 @@ function Admin() {
       ) : (
         <>
           <div className="input-header">Enter your details</div>
-          <div className="input-main ">
+          <div className="input-main px-12">
             <form className="input-form" onSubmit={handleSubmit(onSubmit)}>
               <div className="input-head">Personal Details</div>
               <input
@@ -149,14 +148,17 @@ function Admin() {
                 className="input-mob singlefield"
                 type={"number"}
                 inputMode={"tel"}
-                {...register("personal.mob", { maxLength: 10, required: true })}
+                {...register("contactInformation", {
+                  maxLength: 10,
+                  required: true,
+                })}
                 placeholder="Mobile No- +91"
               />
               <input
                 className="singlefield"
                 type={"email"}
                 inputMode={"email"}
-                {...register("personal.email", { required: true })}
+                {...register("email", { required: true })}
                 placeholder="Email"
               />
               <input

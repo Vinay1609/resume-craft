@@ -1,31 +1,45 @@
 import "../App.css";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Preview from "./Preview";
 import Admin from "./Admin";
-import { userdata } from "../utils/DefaultUserData";
 import Navbar from "./Navbar";
+import { Suspense, useRef } from "react";
 
 function App() {
-  localStorage.setItem("userdata", JSON.stringify(userdata));
+  const printRef = useRef(null);
+  const isLoggedIn = true;
+  const AppLayout = () => <Navbar children={<Outlet printRef={printRef} />} />;
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <AppLayout />,
+      errorElement: <div div>Error 404!</div>,
+      children: [
+        {
+          path: "/",
+          element: (
+            <Suspense>
+              <Preview printRef={printRef} />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/admin",
+          element: isLoggedIn ? (
+            <Suspense>
+              <Admin />
+            </Suspense>
+          ) : (
+            <div></div>
+          ),
+        },
+      ],
+    },
+  ]);
 
-  const isLoggedIn = () => {
-    return true;
-  };
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navbar />} />
-          <Route path="/nav" element={<Preview />} />
-
-          <Route
-            path="/admin"
-            element={
-              isLoggedIn() ? <Admin /> : <Navigate to="/" replace={true} />
-            }
-          />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={appRouter} />
     </div>
   );
 }

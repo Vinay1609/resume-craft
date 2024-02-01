@@ -4,7 +4,7 @@ export const userdata = {
   title: "Software Engineer",
   quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   email: "john.doe@example.com",
-  contactInformation: "+1234567890",
+  contactInformation: "1234567890",
   personal: {
     name: "John",
     lastname: "Doe",
@@ -12,15 +12,14 @@ export const userdata = {
     quote:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem Ipsum is simply dummy text of the printing and typesetting industry. When an unknown printer took.",
     email: "john.doe@example.com",
-    contactInformation: "+1234567890",
     city: "New York",
     country: "USA",
     image:
       "https://media.istockphoto.com/id/1281997438/photo/portrait-of-young-business-woman.jpg?s=170667a&w=0&k=20&c=iqr2wESpmBr5LmVrbWHzEc1ZkZ5w-KIo1bHg4aHmRyo=",
     technicalskill: [
-      { skill: "JavaScript" },
-      { skill: "React" },
-      { skill: "Node.js" },
+      { skill: "JavaScript", rate: 4 },
+      { skill: "React", rate: 4 },
+      { skill: "Node.js", rate: 2 },
     ],
     interest: [
       { hobbie: "Reading" },

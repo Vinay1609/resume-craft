@@ -26,7 +26,7 @@ const Preview = ({ printRef }) => {
             <IoMdMail style={{ color: themeclr }} />
             <div>{userdata.personal.email}</div>
             <BiMobileAlt style={{ color: themeclr }} />
-            <div>{userdata.personal.mob}</div>
+            <div>{userdata.contactInformation}</div>
             <MdLocationOn style={{ color: themeclr }} />
             <div>
               {userdata.personal.city}, {userdata.personal.country}

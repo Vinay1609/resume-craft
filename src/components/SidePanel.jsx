@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { RiAdminLine } from "react-icons/ri";
 import { useReactToPrint } from "react-to-print";
+import { FaShareAlt } from "react-icons/fa";
+import { MdDownloadForOffline } from "react-icons/md";
 
 const SidePanel = ({ printRef }) => {
   const downloadPDF = useReactToPrint({
@@ -73,10 +75,9 @@ const SidePanel = ({ printRef }) => {
               </div>
             </div>
             <div className="flex space-x-3  items-start gap-3.5 mt-10">
-              <img
-                loading="lazy"
-                alt="img"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ade8310a47e1e77802ae079d74a6f3f87647cb0cdeab1a569d3870cf57ee6372?"
+              <MdDownloadForOffline
+                color="grey"
+                size="30px"
                 className="aspect-[0.89] object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
               />
               <div
@@ -87,10 +88,9 @@ const SidePanel = ({ printRef }) => {
               </div>
             </div>
             <div className="flex space-x-3  items-start gap-3.5 mt-10 px-px">
-              <img
-                loading="lazy"
-                alt="img"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce7446789305c454b0d97469fea2bf2fa10a2a75f4392aa30f6b3398cdaa3462?"
+              <FaShareAlt
+                color="grey"
+                size="30px"
                 className="aspect-[0.92] object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
               />
               <div className="text-slate-950 text-base font-semibold self-center my-auto">
@@ -98,10 +98,9 @@ const SidePanel = ({ printRef }) => {
               </div>
             </div>
             <div className="flex space-x-3  items-start gap-3.5 mt-10">
-              <img
-                loading="lazy"
-                alt="img"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/edee0afb480fdc0fc8bd0992c9b5d58f5fb0739229e6a5a3aa09a6406f4b7554?"
+              <RiAdminLine
+                color="grey"
+                size="30px"
                 className="aspect-[0.89] object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
               />
               <div
