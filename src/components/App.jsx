@@ -2,12 +2,10 @@ import "../App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Preview from "./Preview";
 import Admin from "./Admin";
-import { useEffect } from "react";
 import { userdata } from "../utils/DefaultUserData";
 import Navbar from "./Navbar";
 
 function App() {
-  console.log("APP COMPONENET---CALLED");
   localStorage.setItem("userdata", JSON.stringify(userdata));
 
   const isLoggedIn = () => {

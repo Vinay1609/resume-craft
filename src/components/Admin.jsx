@@ -98,7 +98,6 @@ function Admin() {
   }, []);
 
   const onSubmit = (data) => {
-    console.log("Data-->", data);
     localStorage.setItem("userdata", JSON.stringify(data));
     navigate("/");
   };
@@ -126,10 +125,6 @@ function Admin() {
   const clrFunc = () => {
     // dispatch(clruserdata());
     reset(emptydata);
-  };
-
-  const handleNext = () => {
-    console.log("VALUEEE");
   };
 
   return (

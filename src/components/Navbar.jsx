@@ -1,36 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import SidePanel from "./SidePanel";
 import Preview from "./Preview";
 
 const Navbar = () => {
   const printRef = useRef(null);
-
-  const [excelFile, setExcelFile] = useState(null);
-  const [excelData, setExcelData] = useState(null);
-
-  const handleFile = (e) => {
-    let fileTypes = [
-      "application/vnd.ms-excel",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "text/csv",
-    ];
-    let selectedFile = e.target.files[0];
-    if (selectedFile) {
-      if (selectedFile && fileTypes.includes(selectedFile.type)) {
-        let reader = new FileReader();
-        reader.readAsArrayBuffer(selectedFile);
-        reader.onload = (e) => {
-          setExcelFile(e.target.result);
-        };
-      } else {
-        alert("Please select only excel file types");
-        setExcelFile(null);
-      }
-    } else {
-      console.log("Please select your file");
-    }
-  };
-
   return (
     <div className="bg-gray-50 pr-8 max-md:pr-5">
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">

@@ -1,49 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
 import "./Preview.css";
-import { AiOutlineLink, AiFillGithub } from "react-icons/ai";
+import React from "react";
 import { IoMdMail } from "react-icons/io";
-import { BiMobileAlt, BiSquare } from "react-icons/bi";
 import { MdLocationOn } from "react-icons/md";
 import { GrLinkedinOption } from "react-icons/gr";
-import { Link, useNavigate } from "react-router-dom";
+import { BiMobileAlt, BiSquare } from "react-icons/bi";
+import { AiOutlineLink, AiFillGithub } from "react-icons/ai";
+
+const themeclr = "#643baa";
 
 const Preview = ({ printRef }) => {
-  const [loading, setLoading] = useState(true);
-  const [loadhint, setloadhint] = useState("");
-  const themeclr = "#643baa";
-
-  const navigate = useNavigate();
   const userdata = JSON.parse(localStorage.getItem("userdata"));
-  useEffect(() => {
-    console.log("BBEBEE----->", JSON.parse(localStorage.getItem("userdata")));
-  });
-
-  const loadFunc = () => {
-    const hints = [
-      "Please wait your resume is in process...",
-      "Hint: Entering the complete details will make your resume looks awesome",
-    ];
-    setLoading(true);
-    hints.map((item, index) => {
-      return setTimeout(() => {
-        setloadhint(item);
-      }, 3000 * index);
-    });
-    setTimeout(() => {
-      setLoading(false);
-    }, 6000);
-  };
-  useEffect(() => {
-    if (!userdata.personal) {
-      navigate("/");
-    }
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-    loadFunc();
-  }, []);
 
   return (
     <div id="divId" className="resume-main" ref={printRef}>
