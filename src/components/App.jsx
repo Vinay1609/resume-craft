@@ -3,11 +3,12 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Preview from "./Preview";
 import Admin from "./Admin";
 import Navbar from "./Navbar";
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useState } from "react";
+import LoginModal from "./Modal";
 
 function App() {
   const printRef = useRef(null);
-  const isLoggedIn = true;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const AppLayout = () => <Navbar children={<Outlet printRef={printRef} />} />;
   const appRouter = createBrowserRouter([
     {
@@ -30,7 +31,9 @@ function App() {
               <Admin />
             </Suspense>
           ) : (
-            <div></div>
+            <>
+              <LoginModal open={!isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            </>
           ),
         },
       ],
