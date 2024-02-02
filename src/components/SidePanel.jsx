@@ -4,6 +4,7 @@ import { RiAdminLine } from "react-icons/ri";
 import { useReactToPrint } from "react-to-print";
 import { FaShareAlt } from "react-icons/fa";
 import { MdDownloadForOffline } from "react-icons/md";
+import { VscPreview } from "react-icons/vsc";
 
 const SidePanel = ({ printRef }) => {
   const downloadPDF = useReactToPrint({
@@ -13,6 +14,9 @@ const SidePanel = ({ printRef }) => {
   const navigate = useNavigate();
   const handleNaigateAdmin = () => {
     navigate("/admin");
+  };
+  const handlePreviewNavigation = () => {
+    navigate("/");
   };
 
   return (
@@ -41,37 +45,30 @@ const SidePanel = ({ printRef }) => {
         </div>
         <div className="bg-white flex w-full grow flex-col mx-auto py-5 items-start max-md:mt-8">
           <div className="self-stretch flex flex-col items-stretch mt-10 mb-80 pl-8 pr-16 max-md:my-10 max-md:px-5">
-            <div className="flex space-x-3  items-start gap-3.5">
-              <img
-                loading="lazy"
-                alt="img"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/b76d735770155c739c04bb4c87c1b1d989951bfc723169acd38acc8cc3fca3ba?"
+            <div
+              className="flex space-x-3  items-start gap-3.5"
+              onClick={handlePreviewNavigation}
+            >
+              <VscPreview
+                color="grey"
+                size="30px"
                 className="aspect-[1.09] object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
               />
               <div className="text-slate-950 text-base font-semibold self-start">
-                Dashboard
-              </div>
-            </div>
-            <div className="flex  space-x-3 items-start gap-3.5 mt-10">
-              <img
-                loading="lazy"
-                alt="img"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/00c7c088d53f33448defa11fbc2959e20bd160f34269fbcd379c2c8f6ac940c3?"
-                className="aspect-[0.89] object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-              />
-              <div className="text-slate-950 text-base font-semibold my-auto">
-                Templates
+                Preview
               </div>
             </div>
             <div className="flex space-x-3  items-start gap-3.5 mt-10">
-              <img
-                loading="lazy"
-                alt="img"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/00c7c088d53f33448defa11fbc2959e20bd160f34269fbcd379c2c8f6ac940c3?"
+              <RiAdminLine
+                color="grey"
+                size="30px"
                 className="aspect-[0.89] object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
               />
-              <div className="text-slate-950 text-base font-semibold my-auto">
-                AI Asistant
+              <div
+                className="text-slate-950 text-base font-semibold self-center my-auto"
+                onClick={handleNaigateAdmin}
+              >
+                Admin
               </div>
             </div>
             <div className="flex space-x-3  items-start gap-3.5 mt-10">
@@ -95,30 +92,6 @@ const SidePanel = ({ printRef }) => {
               />
               <div className="text-slate-950 text-base font-semibold self-center my-auto">
                 Share
-              </div>
-            </div>
-            <div className="flex space-x-3  items-start gap-3.5 mt-10">
-              <RiAdminLine
-                color="grey"
-                size="30px"
-                className="aspect-[0.89] object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-              />
-              <div
-                className="text-slate-950 text-base font-semibold self-center my-auto"
-                onClick={handleNaigateAdmin}
-              >
-                Admin
-              </div>
-            </div>
-            <div className="flex space-x-3  items-start gap-3.5 mt-10">
-              <img
-                loading="lazy"
-                alt="img"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/9f940df9d5b83d99ddc82bcb4c4f448f7fa69dc1d2c24d2a2e250f4227d57dcd?"
-                className="aspect-[0.92] object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-              />
-              <div className="text-slate-950 text-base font-semibold self-center my-auto">
-                Settings
               </div>
             </div>
           </div>
