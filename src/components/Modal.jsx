@@ -1,11 +1,32 @@
 import React, { useState } from "react";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { initializeApp } from "firebase/app";
+
+const validEmail = "vinayyad16@gmail.com";
+const validPassword = "password123";
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGE_SENDERID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+};
+
+initializeApp(firebaseConfig);
 
 const LoginModal = ({ open, setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const validEmail = "vinayyad16@gmail.com";
-  const validPassword = "password123";
+  const auth = getAuth();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -23,6 +44,21 @@ const LoginModal = ({ open, setIsLoggedIn }) => {
       setError(null);
     } else {
       setError("Invalid email or password");
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          setIsLoggedIn(true);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } catch (error) {
+      console.error("Google Sign-In Error", error);
     }
   };
 
@@ -96,6 +132,23 @@ const LoginModal = ({ open, setIsLoggedIn }) => {
                     >
                       Remember me
                     </label>
+                  </div>
+                </div>
+
+                <div className="self-stretch flex w-full items-stretch justify-between gap-5 mt-8 max-md:max-w-full max-md:flex-wrap">
+                  <div className="bg-white flex justify-between gap-5 px-14 py-2 rounded-xl items-start max-md:px-5">
+                    <img
+                      loading="lazy"
+                      alt="img"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/11ed72cf772413cafc39e7b32e40e5cb049386428c58f699cb44ccb41f39844b?"
+                      className="aspect-[0.94] object-contain object-center w-[15px] overflow-hidden shrink-0 max-w-full"
+                    />
+                    <button
+                      className="justify-center text-zinc-500 text-center text-xs grow shrink basis-auto"
+                      onClick={handleGoogleSignIn}
+                    >
+                      Login with Google
+                    </button>
                   </div>
                 </div>
                 <button
