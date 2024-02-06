@@ -1,4 +1,3 @@
-import "../App.css";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Preview from "./Preview";
 import Admin from "./Admin";
@@ -6,10 +5,20 @@ import Navbar from "./Navbar";
 import { Suspense, useRef, useState } from "react";
 import LoginModal from "./Modal";
 
-function App() {
+function App({ userdata, updateLocalStorage }) {
   const printRef = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const AppLayout = () => <Navbar children={<Outlet printRef={printRef} />} />;
+  const AppLayout = () => (
+    <Navbar
+      children={
+        <Outlet
+          printRef={printRef}
+          userdata={userdata}
+          updateLocalStorage={updateLocalStorage}
+        />
+      }
+    />
+  );
   const appRouter = createBrowserRouter([
     {
       path: "/",
@@ -28,7 +37,10 @@ function App() {
           path: "/admin",
           element: isLoggedIn ? (
             <Suspense>
-              <Admin />
+              <Admin
+                userdata={userdata}
+                updateLocalStorage={updateLocalStorage}
+              />
             </Suspense>
           ) : (
             <>

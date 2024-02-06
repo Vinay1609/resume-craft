@@ -1,4 +1,3 @@
-import "./Preview.css";
 import React from "react";
 import { IoMdMail } from "react-icons/io";
 import { MdLocationOn } from "react-icons/md";

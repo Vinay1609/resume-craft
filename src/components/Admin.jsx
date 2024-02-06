@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { RiCloseFill } from "react-icons/ri";
-import "./Admin.css";
 import { useForm, useFieldArray } from "react-hook-form";
 import { emptydata } from "../utils/DefaultUserData";
 import { useNavigate } from "react-router-dom";
 
-function Admin() {
+function Admin(props) {
   const [loading, setLoading] = useState(true);
   const existingData = JSON.parse(localStorage.getItem("userdata"));
   const [present, Setpresent] = useState([]);
@@ -98,6 +97,7 @@ function Admin() {
 
   const onSubmit = (data) => {
     localStorage.setItem("userdata", JSON.stringify(data));
+    props.updateLocalStorage(data);
     navigate("/");
   };
 
@@ -122,7 +122,6 @@ function Admin() {
   };
 
   const clrFunc = () => {
-    // dispatch(clruserdata());
     reset(emptydata);
   };
 

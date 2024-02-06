@@ -1,10 +1,4 @@
 export const userdata = {
-  name: "John",
-  lastname: "Doe",
-  title: "Software Engineer",
-  quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  email: "john.doe@example.com",
-  contactInformation: "1234567890",
   personal: {
     name: "John",
     lastname: "Doe",
@@ -27,6 +21,11 @@ export const userdata = {
       { hobbie: "Photography" },
     ],
   },
+  title: "Software Engineer",
+  quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  email: "john.doe@example.com",
+  contactInformation: "1234567890",
+
   link: {
     linkedin: "linkedin.com/in/johndoe",
     github: "github.com/johndoe",
